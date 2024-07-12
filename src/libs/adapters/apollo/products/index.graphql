@@ -1,0 +1,18 @@
+mutation CreateProduct($data: CreateProductInput!) {
+  createProduct(data: $data) {
+    description
+    id
+    name
+    updatedAt
+    createdAt
+  }
+}
+
+query Products {
+  products {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}

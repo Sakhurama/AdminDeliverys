@@ -1,0 +1,58 @@
+schema:
+    - http://localhost:4000/graphql
+documents: "./src/libs/adapters/apollo/**/*.graphql"
+generates:
+    ./src/libs/requests/types.generated.ts:
+        plugins:
+            - typescript
+        config:
+            avoidOptionals:
+                field: true
+                inputValue: false
+                object: true
+                defaultValue: true
+            typesPrefix: I
+            enumPrefix: false
+            inputMaybeValue: T | undefined
+            scalars:
+                UUID: string
+                BigInt: number
+                JWT: string
+                EmailAddress: string
+                DateTime: string
+                PositiveFloat: number
+                Latitude: number
+                Longitude: number
+                Float: number
+                Int: number
+                PositiveInt: number
+    ./src/libs/requests/operations.generated.ts:
+        preset: import-types
+        presetConfig:
+            typesPath: ./types.generated
+        plugins:
+            - typescript-operations
+        config:
+            avoidOptionals: true
+            preResolveTypes: false
+            useTypeImports: true
+            typesPrefix: I
+            enumPrefix: false
+    ./src/libs/requests/react.generated.ts:
+        preset: import-types
+        presetConfig:
+            typesPath: ./operations.generated
+        plugins:
+            - typescript-react-apollo
+        config:
+            importDocumentNodeExternallyFrom: ./nodes.generated
+            documentMode: external
+            useTypeImports: true
+            typesPrefix: I
+            enumPrefix: false
+    ./src/libs/requests/nodes.generated.ts:
+        plugins:
+            - typescript-document-nodes
+        config:
+            documentMode: documentNodeImportFragments
+            documentNodeImport: "@apollo/client#DocumentNode"

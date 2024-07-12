@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import ListaProductos from "@/components/VerTablas/ListaProductos";
@@ -5,18 +7,22 @@ import ListaProductos from "@/components/VerTablas/ListaProductos";
 import TableOne from "@/components/Tables/TableOne";
 import TableThree from "@/components/Tables/TableThree";
 import TableTwo from "@/components/Tables/TableTwo";
+import { ApolloProvider } from "@apollo/client";
+import { useGraphQLClient } from "@/libs/adapters/apollo/client";
 
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
-export const metadata: Metadata = {
-  title: "Negocio | Productos",
-  description:
-    "This is Next.js Tables page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
-};
+// export const metadata: Metadata = {
+//   title: "Negocio | Productos",
+//   description:
+//     "This is Next.js Tables page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+// };
 
 const TablesPage = () => {
+  const client = useGraphQLClient(null);
   return (
+    <ApolloProvider client={client}>
     <DefaultLayout>
       <div className="flex justify-between">
         <Breadcrumb pageName="Productos"/>
@@ -37,6 +43,7 @@ const TablesPage = () => {
         <ListaProductos />
       </div>
     </DefaultLayout>
+    </ApolloProvider>
   );
 };
 
