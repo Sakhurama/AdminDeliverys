@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const TablesPage = () => {
   return (
     <DefaultLayout>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <Breadcrumb pageName="Productos"/>
         
 
