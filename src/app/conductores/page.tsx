@@ -23,7 +23,7 @@ const ConductoresPage = () => {
         <Breadcrumb pageName="Conductores"/>
         
         <Link
-          href="/productos/addProduct"
+          href="/conductores/addConductor"
           className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#FFBC0D] mb-3 px-3 py-4 text-center font-medium text-white hover:bg-[#ffdd87] hover:text-black transition-colors duration-300 sm:px-5 sm:gap-2.5 sm:py-5 lg:px-8 xl:px-10"
           >
           <span>

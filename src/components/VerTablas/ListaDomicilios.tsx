@@ -1,7 +1,6 @@
 import { Package } from "@/types/package";
-import { DatosClientes } from "@/types/datosClientes";
 
-const packageData: DatosClientes[] = [
+const packageData = [
   {
     name: "Daniel Romero",
     celular: 3206215191,

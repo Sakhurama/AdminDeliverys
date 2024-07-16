@@ -2,7 +2,7 @@ import { CONDUCTORES } from "@/types/datosConductores";
 import { BRAND } from "@/types/brand";
 import Image from "next/image";
 
-const brandData = [
+const packageData = [
   {
     foto: "/images/user/user-01.png",
     nombre: "Daniel Alberto",
@@ -43,79 +43,65 @@ const brandData = [
 const ListaConductores = () => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-      <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
-        Lista de Conductores
-      </h4>
+      <div className="max-w-full overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead>
+            <tr className="bg-gray-2 text-left dark:bg-meta-4">
+              <th className="min-w-15 px-4 py-4 font-medium text-black dark:text-white xl:pl-11">
 
-      <div className="flex flex-col">
-        <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-4">
-          <div className="p-2.5 xl:p-5">
-            <h5 className="text-sm font-medium  ml-8 uppercase xsm:text-base">
-              Nombres
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Apellidos
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Tipo documento
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Número documento
-            </h5>
-          </div>
-          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Conversion
-            </h5>
-          </div> */}
-        </div>
+              </th>
+              <th className="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
+                Nombre
+              </th>
+              <th className="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                Apellido
+              </th>
+              <th className="px-4 py-4 font-medium text-black dark:text-white">
+                Tipo de documento
+              </th>
+              <th className="px-4 py-4 font-medium text-black dark:text-white">
+                Número de documento
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {packageData.map((packageItem, key) => (
+              <tr key={key}>
+                <td className="border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
+                  <div className="h-12.5 w-15 rounded-md">
+                    <Image
+                      src={packageItem.foto}
+                      width={60}
+                      height={50}
+                      alt="Product"
+                    />
+                  </div>
+                </td>
+                <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                  <p className="text-black dark:text-white">
+                  {packageItem.nombre}
+                  </p>
+                </td>
+                <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                  <p className="text-black dark:text-white">
+                    {packageItem.apellido}
+                  </p>
+                </td>
+                <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                  <p className="text-black dark:text-white">
+                    {packageItem.tipo}
+                  </p>
+                </td>
+                <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                  <p className="text-black dark:text-white">
+                    {packageItem.documento}
+                  </p>
+                </td>
 
-        {brandData.map((brand, key) => (
-          <div
-            className={`grid grid-cols-3 sm:grid-cols-4 ${
-              key === brandData.length - 1
-                ? ""
-                : "border-b border-stroke dark:border-strokedark"
-            }`}
-            key={key}
-          >
-            <div className="flex flex-col sm:flex-row items-center gap-3 p-2.5 xl:p-5">
-              <div className="h-12.5 w-15 rounded-md">
-                <Image
-                  src={brand.foto}
-                  width={60}
-                  height={50}
-                  alt="Foto del conductor"
-                />
-              </div>
-              <p className="hidden text-black dark:text-white sm:block">
-                {brand.nombre}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-white">{brand.apellido}</p>
-            </div>
-
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-white">{brand.tipo}</p>
-            </div>
-
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{brand.documento}</p>
-            </div>
-
-            {/* <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-meta-5">{brand.conversion}%</p>
-            </div> */}
-          </div>
-        ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { Product } from "@/types/product";
-import { PRODUCTOS } from "@/types/datosProductos";
 
-const productData: PRODUCTOS[] = [
+const productData = [
   {
     image: "/images/product/hamburguesa.png",
     name: "Hamburguesa",
