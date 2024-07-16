@@ -81,6 +81,11 @@ export type Scalars = {
   Void: { input: any; output: any; }
 };
 
+export type IAuthResponse = {
+  __typename?: 'AuthResponse';
+  token: Scalars['String']['output'];
+};
+
 export type ICreateCustomerInput = {
   lastName?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -201,6 +206,7 @@ export type IMutation = {
   createDelivery: IDelivery;
   createDriver: IDriver;
   createProduct: IProduct;
+  dashboardAuth: Maybe<IAuthResponse>;
   deleteCustomer: ICustomer;
   deleteDelivery: IDelivery;
   deleteDriver: IDriver;
@@ -229,6 +235,11 @@ export type IMutationCreateDriverArgs = {
 
 export type IMutationCreateProductArgs = {
   data: ICreateProductInput;
+};
+
+
+export type IMutationDashboardAuthArgs = {
+  input: ICredentialsInput;
 };
 
 
@@ -352,6 +363,11 @@ export type IUpdateProductInput = {
   description?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   value?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ICredentialsInput = {
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
 };
 
 export type IHello = {

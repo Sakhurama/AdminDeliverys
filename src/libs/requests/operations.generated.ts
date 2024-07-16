@@ -1,5 +1,18 @@
 import type * as Types from './types.generated';
 
+export type IDashboardAuthMutationVariables = Types.Exact<{
+  input: Types.ICredentialsInput;
+}>;
+
+
+export type IDashboardAuthMutation = (
+  { __typename?: 'Mutation' }
+  & { dashboardAuth: Types.Maybe<(
+    { __typename?: 'AuthResponse' }
+    & Pick<Types.IAuthResponse, 'token'>
+  )> }
+);
+
 export type ICreateProductMutationVariables = Types.Exact<{
   data: Types.ICreateProductInput;
 }>;

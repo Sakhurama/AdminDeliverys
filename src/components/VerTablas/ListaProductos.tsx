@@ -76,6 +76,7 @@ const ListaProductos = () => {
               </p>
             </div>
           </div>
+          
           <div className="col-span-2 flex items-center">
             <p className="text-sm text-black dark:text-white">
               ${product.price.toLocaleString('es-ES')}

@@ -33,7 +33,7 @@ const menuGroups = [
           <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 12a9 9 0 1 0 -9 9" /><path d="M9 10h.01" /><path d="M15 10h.01" /><path d="M9.5 15c.658 .672 1.56 1 2.5 1" /><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M20.2 20.2l1.8 1.8" /></svg>
         ),
         label: "Conductores",
-        route: "/conductores",
+        route: "#",
         children: [
           { label: "Ver conductores", route: "/conductores" },
           { label: "Agregar conductor", route: "/conductores/addConductor" },
@@ -43,7 +43,7 @@ const menuGroups = [
         icon: (
         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h3" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" /></svg>),
         label: "Clientes",
-        route: "/clientes",
+        route: "#",
         children: [
           { label: "Ver clientes", route: "/clientes" },
           { label: "Agregar cliente", route: "/clientes/addClientes" },
@@ -54,14 +54,18 @@ const menuGroups = [
           <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 16v1a2 2 0 0 0 4 0v-5h-3a3 3 0 0 0 -3 3v1h10a6 6 0 0 1 5 -4v-5a2 2 0 0 0 -2 -2h-1" /><path d="M6 9l3 0" /></svg>
         ),
         label: "Domicilios",
-        route: "www.google.com",
+        route: "#",
+        children: [
+          { label: "Ver domicilios", route: "/domicilios" },
+          { label: "Crear domicilio", route: "/domicilios/addDomicilios" },
+        ],
       },
       {
         icon: (
         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 12.5l-5 -3l5 -3l5 3v5.5l-5 3z" /><path d="M11 9.5v5.5l5 3" /><path d="M16 12.545l5 -3.03" /><path d="M7 9h-5" /><path d="M7 12h-3" /><path d="M7 15h-1" /></svg>
         ),
         label: "Paquetes de domicilios",
-        route: "www.google.com",
+        route: "#",
       },
       // {
       //   icon: (
@@ -283,7 +287,7 @@ const menuGroups = [
           </svg>
         ),
         label: "Cerrar sesión",
-        route: "#",
+        route: "/",
         // children: [
         //   { label: "Sign In", route: "/auth/signin" },
         //   { label: "Sign Up", route: "/auth/signup" },

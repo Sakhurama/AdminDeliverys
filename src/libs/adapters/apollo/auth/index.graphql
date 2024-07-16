@@ -1,0 +1,5 @@
+mutation DashboardAuth($input: credentialsInput!) {
+  dashboardAuth(input: $input) {
+    token
+  }
+}

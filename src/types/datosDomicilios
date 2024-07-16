@@ -1,0 +1,7 @@
+export type DatosDomicilios = {
+    name: string;
+    email: string;
+    celular: number;
+    status: string;
+    direccion: string;
+  };

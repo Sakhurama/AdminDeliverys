@@ -1,10 +1,12 @@
 import React from "react";
+import { useState } from 'react';
 import Link from "next/link";
 import SidebarDropdown from "@/components/Sidebar/SidebarDropdown";
 import { usePathname } from "next/navigation";
 
 const SidebarItem = ({ item, pageName, setPageName }: any) => {
   const handleClick = () => {
+    setIsYellowBackground(true);
     const updatedPageName =
       pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
     return setPageName(updatedPageName);
@@ -22,13 +24,16 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
 
   const isItemActive = isActive(item);
 
+  const [isYellowBackground, setIsYellowBackground] = useState(false)
+
+
   return (
     <>
       <li>
         <Link
           href={item.route}
           onClick={handleClick}
-          className={`${isItemActive ? "bg-[#DA291C] text-[#FFFF] dark:bg-meta-4 rounded-md" : ""} group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-[#27251F] duration-300 ease-in-out hover:bg-[#FFC72C] dark:hover:bg-meta-4`}
+          className={`${isItemActive ? "bg-[#DA291C] text-[#FFFF] dark:bg-meta-4 rounded-md" : ""} ${isYellowBackground ? "bg-[#FFC72C]" : ""} group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-[#27251F] duration-300 ease-in-out hover:bg-[#FFC72C] dark:hover:bg-meta-4`}
         >
           {item.icon}
           {item.label}

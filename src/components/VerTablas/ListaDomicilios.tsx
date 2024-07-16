@@ -1,7 +1,7 @@
 import { Package } from "@/types/package";
 import { DatosClientes } from "@/types/datosClientes";
 
-const packageData = [
+const packageData: DatosClientes[] = [
   {
     name: "Daniel Romero",
     celular: 3206215191,
@@ -39,7 +39,7 @@ const packageData = [
   },
 ];
 
-const ListaClientes = () => {
+const ListaDomicilios = () => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -51,6 +51,9 @@ const ListaClientes = () => {
               </th>
               <th className="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
                 Celular
+              </th>
+              <th className="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
+                Estado
               </th>
               <th className="px-4 py-4 font-medium text-black dark:text-white">
                 Dirección
@@ -71,7 +74,19 @@ const ListaClientes = () => {
                     {packageItem.celular}
                   </p>
                 </td>
-
+                <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
+                  <p
+                    className={`inline-flex rounded-full bg-opacity-10 px-3 py-1 text-sm font-medium ${
+                      packageItem.status === "Enviado"
+                        ? "bg-success text-success"
+                        : packageItem.status === "Cancelado"
+                          ? "bg-danger text-danger"
+                          : "bg-warning text-warning"
+                    }`}
+                  >
+                    {packageItem.status}
+                  </p>
+                </td>
                 <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                 <p className="text-black dark:text-white">
                     {packageItem.direccion}
@@ -86,4 +101,4 @@ const ListaClientes = () => {
   );
 };
 
-export default ListaClientes;
+export default ListaDomicilios;
