@@ -210,6 +210,7 @@ const menuGroups = [
         ),
         label: "Whatsapp",
         route: "https://web.whatsapp.com/",
+        openInNewTab: true,
       },
       // {
       //   icon: (

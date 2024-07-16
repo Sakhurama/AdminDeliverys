@@ -23,7 +23,7 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
 
   const isItemActive = isActive(item);
 
-
+  const shouldOpenInNewTab = item.openInNewTab || false;
 
   return (
     <>
@@ -31,6 +31,7 @@ const SidebarItem = ({ item, pageName, setPageName }: any) => {
         <Link
           href={item.route}
           onClick={handleClick}
+          target={shouldOpenInNewTab ? "_blank" : "_self"}
           className={`${pageName === item.label.toLowerCase() ? "bg-[#DA291C] text-[#FFFF] dark:bg-meta-4 rounded-md" : ""} group relative flex items-center gap-2.5 rounded-md px-4 py-2 font-medium text-[#27251F] duration-300 ease-in-out hover:bg-[#FFC72C] dark:hover:bg-meta-4`}
           >
           {item.icon}
