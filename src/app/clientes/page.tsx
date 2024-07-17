@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const ClientesPage = () => {
   return (
     <DefaultLayout>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <Breadcrumb pageName="Clientes"/>
         
         <Link
