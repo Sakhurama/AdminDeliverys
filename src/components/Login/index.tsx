@@ -74,36 +74,27 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <div className="h-screen flex items-center justify-center rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div className="h-screen flex items-start justify-center rounded-sm border border-stroke bg-white shadow-default sm:items-center">
         <div className="flex flex-wrap items-center justify-center">
-          <div className="hidden w-full xl:block xl:w-1/2">
-            <div className="px-26 py-17.5 text-center">
+          <div className="w-full xl:block xl:w-1/2">
+            <div className="px-26 mt-9 text-center">
               <Image
                 src={"/images/logo/logoCompleto.png"}
                 alt="Logo"
-                width={600}
-                height={100}
+                width={931}
+                height={834}
               />
-
-              {/* <p className="2xl:px-20">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  suspendisse.
-                </p> */}
-
-              <span className="mt-15 inline-block">
-                {/* <svg></svg> */}
-              </span>
             </div>
           </div>
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <span className="mb-1.5 block font-medium">¡Bienvenido nuevamente!</span>
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+              <span className="mb-1.5 block font-medium text-center">¡Bienvenido nuevamente!</span>
+              <h2 className="mb-9 text-2xl font-bold text-black text-center dark:text-white sm:text-title-xl2">
                 Iniciar sesión
               </h2>
 
-              <form>
+              <form className="mx-4 sm:mx-0">
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Correo eletrónico:
@@ -140,7 +131,7 @@ const Login: React.FC = () => {
 
                 <div className="mb-6">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    Contraseña
+                    Contraseña:
                   </label>
                   <div className="relative">
                     <input
