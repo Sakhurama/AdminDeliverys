@@ -33,32 +33,12 @@ const GoogleMaps = () => {
 
   const [searchResult1, setSearchResult1] = useState<google.maps.places.Autocomplete>()
   const [searchResult2, setSearchResult2] = useState<google.maps.places.Autocomplete>()
-  const [driverPosition, setDriverPosition] = useState({
-    position: { lat: 40.7128, lng: -74.0060 },
-    heading: 0
-  });
-  const [mapsLoaded, setMapsLoaded] = useState<any>(null);
-  const [icon, setIcon] = useState<any>(null);
+
   const [directions, setDirections] = useState<any>(null);
   const [location1, setLocation1] = useState<any>(null);
   const [location2, setLocation2] = useState<any>(null);
 
-  const danielito = useCallback((map: google.maps.Map) => {
-    const createIcon = (heading: number) => ({
-      path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      scale: 5,
-      fillColor: "#FF0000",
-      fillOpacity: 1,
-      strokeWeight: 2,
-      rotation: heading
-    });
-    
-    setIcon(createIcon(driverPosition!.heading));
-    setMapsLoaded(google.maps);
-  }, []);
-
-
-
+ 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -71,46 +51,7 @@ const GoogleMaps = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const updateDriverPosition = () => {
-      setDriverPosition(prevState => {
-        const newLat = prevState.position.lat + (Math.random() - 0.5) * 0.001;
-        const newLng = prevState.position.lng + (Math.random() - 0.5) * 0.001;
-        const newHeading = Math.random() * 360; // Orientación aleatoria entre 0 y 360 grados
-
-        // Actualizar el icono con la nueva orientación
-        // setIcon(createIcon(newHeading));
-
-        if (mapsLoaded) {
-          setIcon(createIcon(newHeading));
-        }     
-        return {
-          position: { lat: newLat, lng: newLng },
-          heading: newHeading
-        };
-      });
-
-      setTimeout(updateDriverPosition, 1000);
-    };
-    
-    const createIcon = (heading: number): google.maps.Symbol => ({
-      path: mapsLoaded.SymbolPath.FORWARD_CLOSED_ARROW,
-      scale: 5,
-      fillColor: "#FF0000",
-      fillOpacity: 1,
-      strokeWeight: 2,
-      rotation: heading
-    });
-
-
-    updateDriverPosition();
-
-    // return () => clearTimeout(updateDriverPosition);
-  }, [mapsLoaded]);
-
-  useEffect(() => {
-    console.log(icon);
-  }, [icon]);
+ 
 
   function onLoad1(autocomplete: google.maps.places.Autocomplete) {
     setSearchResult1(autocomplete);
@@ -172,15 +113,13 @@ const GoogleMaps = () => {
           </Autocomplete>
         </div>
         <GoogleMap
-          onLoad={danielito}
           mapContainerStyle={mapContainerStyle}
-          center={driverPosition.position || center}
+          center={location1 || center}
           zoom={18}
           options={options}
         >
-         {driverPosition && icon ? <MarkerF position={driverPosition.position} icon={icon}/> : null}
-         {/* {location ? <MarkerF position={location1} /> : null} */}
-         {/* {location ? <MarkerF position={location2} /> : null}
+         {location ? <MarkerF position={location1} /> : null}
+         {location ? <MarkerF position={location2} /> : null}
          {location1 && location2 ? <><DirectionsService
           options={
             {
@@ -192,7 +131,7 @@ const GoogleMaps = () => {
           callback={directionsCallback}
         /><DirectionsRenderer 
         directions={directions} 
-        /></> : null} */}
+        /></> : null}
         </GoogleMap>
       </div>
     </MapProvider>
