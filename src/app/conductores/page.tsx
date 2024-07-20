@@ -1,11 +1,7 @@
 import Link from "next/link";
 
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import ListaConductores from "@/components/VerTablas/ListaConductores";
-
-import TableOne from "@/components/Tables/TableOne";
-import TableThree from "@/components/Tables/TableThree";
-import TableTwo from "@/components/Tables/TableTwo";
+import ListaConductores from "@/components/Tablas/ListaConductores";
 
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";

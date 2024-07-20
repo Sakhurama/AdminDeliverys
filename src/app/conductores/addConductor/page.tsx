@@ -2,7 +2,6 @@ import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import CategoriasProductos from "@/components/CategoriasForm/Productos";
 import TipoDocumento from "@/components/CategoriasForm/TipoDocumento";
 
 export const metadata: Metadata = {
