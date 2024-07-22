@@ -94,7 +94,7 @@ const GoogleMaps = () => {
               <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="#FFBC0D"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
               <input 
                 type="text"
-                placeholder="Ingrese una dirección..."
+                placeholder="Ubicación del domicilio..."
                 className="p-4 ml-4 border-2 border-gray-300 border-[#FFBC0D] rounded-lg w-150 text-black"
               />
             </div>
@@ -105,11 +105,14 @@ const GoogleMaps = () => {
                 fields={['geometry.location', 'formatted_address']}
                 options={autocompleteOptions}
           >
-                <input 
-                  type="text"
-                  placeholder="Ingrese una dirección..."
-                  className='mb-4 p-4 border-2 border-gray-300 border-[#DA291C] rounded-lg w-150 text-black'
-                  />
+            <div className="flex items-center mb-4">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="#DA291C"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.707 2.293l9 9c.63 .63 .184 1.707 -.707 1.707h-1v6a3 3 0 0 1 -3 3h-1v-7a3 3 0 0 0 -2.824 -2.995l-.176 -.005h-2a3 3 0 0 0 -3 3v7h-1a3 3 0 0 1 -3 -3v-6h-1c-.89 0 -1.337 -1.077 -.707 -1.707l9 -9a1 1 0 0 1 1.414 0m.293 11.707a1 1 0 0 1 1 1v7h-4v-7a1 1 0 0 1 .883 -.993l.117 -.007z" /></svg>
+              <input 
+                type="text"
+                placeholder="Ingrese el destino..."
+                className="ml-4 p-4 border-2 border-gray-300 border-[#DA291C] rounded-lg w-150 text-black"
+              />
+            </div>
           </Autocomplete>
         </div>
         <GoogleMap
