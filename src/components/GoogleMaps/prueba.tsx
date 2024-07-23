@@ -23,8 +23,8 @@ const RotatedMarker: React.FC<RotatedMarkerProps> = ({ position, icon, rotation 
         style={{
           background: `url(${icon}) no-repeat center center`,
           backgroundSize: 'contain',
-          width: '30px',
-          height: '30px',
+          width: '2.5rem',
+          height: '2.5rem',
           transform: `rotate(${rotation}deg)`,
           transformOrigin: 'center center',
         }}

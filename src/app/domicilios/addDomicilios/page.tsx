@@ -1,5 +1,4 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
@@ -12,22 +11,22 @@ export const metadata: Metadata = {
 const FormLayout = () => {
     return (
       <DefaultLayout>
-        <Breadcrumb pageName="Agregar un nuevo Cliente" />
+        <Breadcrumb pageName="Agregar un nuevo Domicilio" />
 
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-regular text-black dark:text-white">
-                Añade un nuevo cliente
+                Crea un nuevo domicilio y rastrea su ubicación
               </h3>
             </div>
 
             <form action="#">
               <div className="p-6.5">
-                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
 
-                  <div className="w-full xl:w-full">
+                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                  <div className="w-full xl:w-1/2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                      Nombre <span className="text-meta-1">*</span>
+                      Nombre del cliente<span className="text-meta-1">*</span>
                     </label>
                     <input
                       type="text"
@@ -36,12 +35,10 @@ const FormLayout = () => {
                       required
                       />
                   </div>
-                </div>
 
-                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
-                    <div className="w-full xl:w-1/2">
+                  <div className="w-full xl:w-1/2">
                         <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Celular <span className="text-meta-1">*</span>
+                            Celular del cliente<span className="text-meta-1">*</span>
                         </label>
                         <input
                             type="tel"
@@ -51,26 +48,40 @@ const FormLayout = () => {
                             minLength={10} // Los numeros de celular y telefono tienen 10 caracteres
                         />
                     </div>
-
-                    <div className="w-full xl:w-1/2">
-                        <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Correo eletrónico
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Email del cliente"
-                            className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>
                 </div>
 
                 <div className="mb-4.5">
                   <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                    Dirección <span className="text-meta-1">*</span>
+                    Dirección de destino <span className="text-meta-1">*</span>
                   </label>
                   <input
                     type="text"
-                    placeholder="Dirección del cliente"
+                    placeholder="Donde se entrega el domicilio..."
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4.5">
+                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    Observaciones
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Dejar en portería..."
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4.5">
+                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    Dirección de despacho <span className="text-meta-1">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Donde se recoge el domicilio..."
+                    defaultValue="Calle 1 #12-34, Manizales, Colombia"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     required
                   />
