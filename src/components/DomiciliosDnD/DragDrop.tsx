@@ -38,8 +38,11 @@ const repartidores: Record<UniqueIdentifier, { name: string, imageSrc: string, p
 const DragDrop: React.FC = () => {
   const containers: UniqueIdentifier[] = ['A', 'B', 'C', 'D'];
   const [parent, setParent] = useState<{ [key: string]: UniqueIdentifier | null }>({});
-  const [modalOpen, setModalOpen] = useState(false);
+  const [clearModalOpen, setClearModalOpen] = useState(false);
+  const [assignModalOpen, setAssignModalOpen] = useState(false);
   const [dropToClear, setDropToClear] = useState<UniqueIdentifier | null>(null);
+  const [dropToAssign, setDropToAssign] = useState<{ id: UniqueIdentifier, name: string } | null>(null);
+
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -56,12 +59,12 @@ const DragDrop: React.FC = () => {
     }
   };
 
+  // Limpiar pedidos del repartidor
   const openConfirmModal = (dropId: UniqueIdentifier) => {
     setDropToClear(dropId);
-    setModalOpen(true);
+    setClearModalOpen(true);
   };
 
-  // Limpiar el drop/repartidor
   const clearDrop = () => {
     if (dropToClear) {
       setParent(prevParent => {
@@ -74,9 +77,23 @@ const DragDrop: React.FC = () => {
         return newParent;
       });
     }
-    setModalOpen(false);
+    setClearModalOpen(false);
     setDropToClear(null);
   };
+
+  // Asignar pedidos del repartidor
+  const openAssignModal  = (dropId: UniqueIdentifier) => {
+    setDropToAssign({ id: dropId, name: repartidores[dropId].name });
+    setAssignModalOpen(true);
+  };
+
+  const assignDrop = () => {
+    //  (ID: {dropToAssign?.id})
+    console.log(`Pedido asignado al repartidor ${dropToAssign?.name}`);
+    setAssignModalOpen(false);
+    setDropToAssign(null);
+  };
+
 
   const renderDraggable = (item: DraggableItem, inDropZone: boolean) => (
     <div className={`w-48 h-40 p-4 rounded-lg shadow-md ${inDropZone ? 'bg-[#FFBC0D] text-black my-2' : 'bg-[#DA291C] text-white'}`}>
@@ -112,7 +129,7 @@ const DragDrop: React.FC = () => {
           >
 
             {Object.values(parent).filter(p => p === id).length >= 5 && (
-              <div className="text-white text-center font-bold bg-[#DA291C] rounded-md">Límite alcanzado (5)</div>
+              <div className="text-white text-center font-bold px-5 py-2 bg-[#DA291C] rounded-md">Límite alcanzado (5)</div>
             )}
 
             {initialDraggables
@@ -125,15 +142,18 @@ const DragDrop: React.FC = () => {
 
             {Object.values(parent).filter(p => p === id).length >= 1 && (
               <div 
-                onClick={() => openConfirmModal(id)}
-                className='flex justify-center items-center gap-4'
+                className='flex justify-center items-center mt-4 mb-2 gap-4'
               >
-                <button className='flex border-2 border-red text-red p-2 rounded-md gap-2 hover:bg-red hover:text-white transition duration-300 ease-in-out'>
+                <button 
+                  onClick={() => openConfirmModal(id)}
+                  className='flex border-2 border-red text-red p-2 rounded-md gap-2 hover:bg-red hover:text-white transition duration-300 ease-in-out'>
                   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
                   Limpiar
                 </button>
 
-                <button className='flex border-2 border-green-600 bg-green-600 text-white p-2 rounded-md gap-2 hover:bg-green-500 hover:border-green-500 transition duration-300 ease-in-out'>
+                <button 
+                  onClick={() => openAssignModal(id)}
+                  className='flex border-2 border-green-600 bg-green-600 text-white p-2 rounded-md gap-2 hover:bg-green-500 hover:border-green-500 transition duration-300 ease-in-out'>
                   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg>
                   Asignar
                 </button>
@@ -144,19 +164,45 @@ const DragDrop: React.FC = () => {
         ))}
       </div>
 
-      <Modal show={modalOpen} setShow={setModalOpen}>
-        <div className="p-6">
-          <h2 className="text-xl mb-4">¿Estás seguro de que quieres limpiar este drop?</h2>
-          <div className="flex justify-end gap-4">
+      <Modal show={clearModalOpen} setShow={setClearModalOpen}>
+        <div className="p-4 flex flex-col items-center">
+          <div className='flex justify-center items-center mb-4 text-red'>
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="40"  height="40"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
+          </div>
+          <h2 className="text-xl mb-4 text-black text-center">¿Está seguro de <span className='font-bold'>limpiar</span> todos los pedidos de este repartidor?</h2>
+          <div className="flex justify-end gap-4 mt-4">
             <button 
-              onClick={() => setModalOpen(false)}
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition duration-300"
+              onClick={() => setClearModalOpen(false)}
+              className="border-2 border-zinc-400 text-zinc-500 p-2 rounded-md gap-2 hover:bg-zinc-700 hover:text-white transition duration-300 ease-in-out"
             >
               Cancelar
             </button>
             <button 
               onClick={clearDrop}
-              className="px-4 py-2 bg-red-500 text-black rounded hover:bg-red-600 transition duration-300"
+              className="border-2 border-red bg-red text-white p-2 rounded-md gap-2 hover:bg-rojo hover:border-rojo transition duration-300 ease-in-out"
+            >
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal show={assignModalOpen} setShow={setAssignModalOpen}>
+        <div className="p-4 flex flex-col items-center">
+          <div className='flex justify-center items-center mb-4 text-green-600'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg>
+          </div>
+          <h2 className="text-xl mb-4 text-black text-center">¿Quiere <span className=''>asignar</span> estos pedidos al repartidor <span className='font-bold'>{dropToAssign?.name}</span>?</h2>
+          <div className="flex justify-end gap-4 mt-4">
+            <button 
+              onClick={() => setAssignModalOpen(false)}
+              className="border-2 border-zinc-400 text-zinc-500 p-2 rounded-md gap-2 hover:bg-zinc-700 hover:text-white transition duration-300 ease-in-out"
+            >
+              Cancelar
+            </button>
+            <button 
+              onClick={assignDrop}
+              className="border-2 border-green-600 bg-green-600 text-white p-2 rounded-md gap-2 hover:bg-green-500 hover:border-green-500 transition duration-300 ease-in-out"
             >
               Confirmar
             </button>
