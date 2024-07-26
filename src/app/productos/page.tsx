@@ -1,14 +1,11 @@
+"use client"
+
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import ListaProductos from "@/components/Tablas/ListaProductos";
-import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
-export const metadata: Metadata = {
-  title: "Negocio | Productos",
-  description:
-    "This is Next.js Tables page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
-};
+
 
 const TablesPage = () => {
   return (

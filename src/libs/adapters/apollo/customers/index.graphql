@@ -1,0 +1,19 @@
+mutation CreateCustomer($data: CreateCustomerInput!) {
+  createCustomer(data: $data) {
+    name
+    lastName
+    id
+    phone
+  }
+}
+
+query Customers {
+  customers {
+    id
+    lastName
+    name
+    phone
+    updatedAt
+    createdAt
+  }
+}

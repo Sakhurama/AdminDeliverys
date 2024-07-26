@@ -1,5 +1,5 @@
 schema:
-    - https://a1cf-152-201-53-168.ngrok-free.app/graphql
+    - https://kpmbjwr2-4000.use.devtunnels.ms/graphql
 documents: "./src/libs/adapters/apollo/**/*.graphql"
 generates:
     ./src/libs/requests/types.generated.ts:

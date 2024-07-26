@@ -96,7 +96,7 @@ const DragDrop: React.FC = () => {
 
 
   const renderDraggable = (item: DraggableItem, inDropZone: boolean) => (
-    <div className={`w-48 h-40 p-4 rounded-lg shadow-md ${inDropZone ? 'bg-[#FFBC0D] text-black my-2' : 'bg-[#DA291C] text-white'}`}>
+    <div className={`w-48 h-40 p-4 rounded-lg shadow-md ${inDropZone ? 'bg-amarillo text-black my-2' : 'bg-rojo text-white'}`}>
       <div className="font-bold">{item.name}</div>
       <div>{item.address}</div>
       <div>{item.phone}</div>
@@ -108,7 +108,7 @@ const DragDrop: React.FC = () => {
     <DndContext 
       onDragEnd={handleDragEnd}
     >
-      <div className="grid grid-cols-5 gap-4 p-4 border-4 border-[#FFBC0D] rounded-lg bg-gray-100 min-h-50">
+      <div className="grid grid-cols-5 gap-4 p-4 border-4 border-amarillo rounded-lg bg-gray-100 min-h-50">
         {initialDraggables.map((item) => (
           !parent[item.id] && (
             <Draggable key={item.id} id={item.id}>
@@ -129,7 +129,7 @@ const DragDrop: React.FC = () => {
           >
 
             {Object.values(parent).filter(p => p === id).length >= 5 && (
-              <div className="text-white text-center font-bold px-5 py-2 bg-[#DA291C] rounded-md">Límite alcanzado (5)</div>
+              <div className="text-white text-center font-bold px-5 py-2 bg-rojo rounded-md">Límite alcanzado (5)</div>
             )}
 
             {initialDraggables

@@ -13,6 +13,30 @@ export type IDashboardAuthMutation = (
   )> }
 );
 
+export type ICreateCustomerMutationVariables = Types.Exact<{
+  data: Types.ICreateCustomerInput;
+}>;
+
+
+export type ICreateCustomerMutation = (
+  { __typename?: 'Mutation' }
+  & { createCustomer: (
+    { __typename?: 'Customer' }
+    & Pick<Types.ICustomer, 'name' | 'lastName' | 'id' | 'phone'>
+  ) }
+);
+
+export type ICustomersQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type ICustomersQuery = (
+  { __typename?: 'Query' }
+  & { customers: Array<(
+    { __typename?: 'Customer' }
+    & Pick<Types.ICustomer, 'id' | 'lastName' | 'name' | 'phone' | 'updatedAt' | 'createdAt'>
+  )> }
+);
+
 export type ICreateProductMutationVariables = Types.Exact<{
   data: Types.ICreateProductInput;
 }>;

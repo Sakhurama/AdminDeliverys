@@ -31,6 +31,7 @@ const wsLink = isServer
         connectionParams: {
           headers: {
             authorization: getCookie("Authentication")?.toString(),
+            'ngrok-skip-browser-warning': true,
           },
         },
       })
@@ -46,6 +47,7 @@ const authLink = setContext(async (_, { headers }) => {
   return {
     headers: {
       ...headers,
+      'ngrok-skip-browser-warning': true,
       authorization: token ?? "",
     },
   };

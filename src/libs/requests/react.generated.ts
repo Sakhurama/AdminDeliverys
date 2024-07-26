@@ -30,6 +30,64 @@ export function useDashboardAuthMutation(baseOptions?: Apollo.MutationHookOption
 export type DashboardAuthMutationHookResult = ReturnType<typeof useDashboardAuthMutation>;
 export type DashboardAuthMutationResult = Apollo.MutationResult<Types.IDashboardAuthMutation>;
 export type DashboardAuthMutationOptions = Apollo.BaseMutationOptions<Types.IDashboardAuthMutation, Types.IDashboardAuthMutationVariables>;
+export type ICreateCustomerMutationFn = Apollo.MutationFunction<Types.ICreateCustomerMutation, Types.ICreateCustomerMutationVariables>;
+
+/**
+ * __useCreateCustomerMutation__
+ *
+ * To run a mutation, you first call `useCreateCustomerMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCustomerMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCustomerMutation, { data, loading, error }] = useCreateCustomerMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateCustomerMutation(baseOptions?: Apollo.MutationHookOptions<Types.ICreateCustomerMutation, Types.ICreateCustomerMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Types.ICreateCustomerMutation, Types.ICreateCustomerMutationVariables>(Operations.CreateCustomer, options);
+      }
+export type CreateCustomerMutationHookResult = ReturnType<typeof useCreateCustomerMutation>;
+export type CreateCustomerMutationResult = Apollo.MutationResult<Types.ICreateCustomerMutation>;
+export type CreateCustomerMutationOptions = Apollo.BaseMutationOptions<Types.ICreateCustomerMutation, Types.ICreateCustomerMutationVariables>;
+
+/**
+ * __useCustomersQuery__
+ *
+ * To run a query within a React component, call `useCustomersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCustomersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCustomersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCustomersQuery(baseOptions?: Apollo.QueryHookOptions<Types.ICustomersQuery, Types.ICustomersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<Types.ICustomersQuery, Types.ICustomersQueryVariables>(Operations.Customers, options);
+      }
+export function useCustomersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Types.ICustomersQuery, Types.ICustomersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<Types.ICustomersQuery, Types.ICustomersQueryVariables>(Operations.Customers, options);
+        }
+export function useCustomersSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<Types.ICustomersQuery, Types.ICustomersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<Types.ICustomersQuery, Types.ICustomersQueryVariables>(Operations.Customers, options);
+        }
+export type CustomersQueryHookResult = ReturnType<typeof useCustomersQuery>;
+export type CustomersLazyQueryHookResult = ReturnType<typeof useCustomersLazyQuery>;
+export type CustomersSuspenseQueryHookResult = ReturnType<typeof useCustomersSuspenseQuery>;
+export type CustomersQueryResult = Apollo.QueryResult<Types.ICustomersQuery, Types.ICustomersQueryVariables>;
 export type ICreateProductMutationFn = Apollo.MutationFunction<Types.ICreateProductMutation, Types.ICreateProductMutationVariables>;
 
 /**
