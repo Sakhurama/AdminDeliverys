@@ -22,7 +22,7 @@ export type ICreateCustomerMutation = (
   { __typename?: 'Mutation' }
   & { createCustomer: (
     { __typename?: 'Customer' }
-    & Pick<Types.ICustomer, 'name' | 'lastName' | 'id' | 'phone'>
+    & Pick<Types.ICustomer, 'id' | 'name' | 'lastName' | 'phone'>
   ) }
 );
 
@@ -46,7 +46,7 @@ export type ICreateProductMutation = (
   { __typename?: 'Mutation' }
   & { createProduct: (
     { __typename?: 'Product' }
-    & Pick<Types.IProduct, 'description' | 'id' | 'name' | 'updatedAt' | 'createdAt'>
+    & Pick<Types.IProduct, 'id' | 'name' | 'image' | 'value' | 'description' | 'updatedAt' | 'createdAt'>
   ) }
 );
 
@@ -57,6 +57,6 @@ export type IProductsQuery = (
   { __typename?: 'Query' }
   & { products: Array<(
     { __typename?: 'Product' }
-    & Pick<Types.IProduct, 'id' | 'name' | 'createdAt' | 'updatedAt'>
+    & Pick<Types.IProduct, 'id' | 'name' | 'image' | 'value' | 'description' | 'createdAt' | 'updatedAt'>
   )> }
 );

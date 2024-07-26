@@ -108,7 +108,8 @@ export type ICreateDriverInput = {
 };
 
 export type ICreateProductInput = {
-  description: Scalars['String']['input'];
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   value: Scalars['Int']['input'];
 };
@@ -292,8 +293,10 @@ export type IProduct = {
   deliveryProducts: Array<IDeliveryProduct>;
   description: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
+  image: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
+  value: Scalars['Int']['output'];
 };
 
 export type IQuery = {

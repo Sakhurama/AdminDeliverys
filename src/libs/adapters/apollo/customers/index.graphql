@@ -1,8 +1,8 @@
 mutation CreateCustomer($data: CreateCustomerInput!) {
   createCustomer(data: $data) {
+    id
     name
     lastName
-    id
     phone
   }
 }
