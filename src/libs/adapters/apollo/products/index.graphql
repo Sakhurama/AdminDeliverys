@@ -1,9 +1,11 @@
 mutation CreateProduct($data: CreateProductInput!) {
   createProduct(data: $data) {
+    ProductPrice {
+      value
+    }
     id
     name
     image
-    value
     description
     updatedAt
     createdAt
@@ -15,7 +17,9 @@ query Products {
     id
     name
     image
-    value
+    ProductPrice {
+      value
+    }
     description
     createdAt
     updatedAt

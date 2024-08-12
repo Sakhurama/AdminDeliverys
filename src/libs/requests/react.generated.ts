@@ -88,6 +88,90 @@ export type CustomersQueryHookResult = ReturnType<typeof useCustomersQuery>;
 export type CustomersLazyQueryHookResult = ReturnType<typeof useCustomersLazyQuery>;
 export type CustomersSuspenseQueryHookResult = ReturnType<typeof useCustomersSuspenseQuery>;
 export type CustomersQueryResult = Apollo.QueryResult<Types.ICustomersQuery, Types.ICustomersQueryVariables>;
+export type ICreateDeliveryMutationFn = Apollo.MutationFunction<Types.ICreateDeliveryMutation, Types.ICreateDeliveryMutationVariables>;
+
+/**
+ * __useCreateDeliveryMutation__
+ *
+ * To run a mutation, you first call `useCreateDeliveryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateDeliveryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createDeliveryMutation, { data, loading, error }] = useCreateDeliveryMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateDeliveryMutation(baseOptions?: Apollo.MutationHookOptions<Types.ICreateDeliveryMutation, Types.ICreateDeliveryMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Types.ICreateDeliveryMutation, Types.ICreateDeliveryMutationVariables>(Operations.CreateDelivery, options);
+      }
+export type CreateDeliveryMutationHookResult = ReturnType<typeof useCreateDeliveryMutation>;
+export type CreateDeliveryMutationResult = Apollo.MutationResult<Types.ICreateDeliveryMutation>;
+export type CreateDeliveryMutationOptions = Apollo.BaseMutationOptions<Types.ICreateDeliveryMutation, Types.ICreateDeliveryMutationVariables>;
+export type ICreateDriverMutationFn = Apollo.MutationFunction<Types.ICreateDriverMutation, Types.ICreateDriverMutationVariables>;
+
+/**
+ * __useCreateDriverMutation__
+ *
+ * To run a mutation, you first call `useCreateDriverMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateDriverMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createDriverMutation, { data, loading, error }] = useCreateDriverMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateDriverMutation(baseOptions?: Apollo.MutationHookOptions<Types.ICreateDriverMutation, Types.ICreateDriverMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<Types.ICreateDriverMutation, Types.ICreateDriverMutationVariables>(Operations.CreateDriver, options);
+      }
+export type CreateDriverMutationHookResult = ReturnType<typeof useCreateDriverMutation>;
+export type CreateDriverMutationResult = Apollo.MutationResult<Types.ICreateDriverMutation>;
+export type CreateDriverMutationOptions = Apollo.BaseMutationOptions<Types.ICreateDriverMutation, Types.ICreateDriverMutationVariables>;
+
+/**
+ * __useDriversQuery__
+ *
+ * To run a query within a React component, call `useDriversQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDriversQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDriversQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useDriversQuery(baseOptions?: Apollo.QueryHookOptions<Types.IDriversQuery, Types.IDriversQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<Types.IDriversQuery, Types.IDriversQueryVariables>(Operations.Drivers, options);
+      }
+export function useDriversLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Types.IDriversQuery, Types.IDriversQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<Types.IDriversQuery, Types.IDriversQueryVariables>(Operations.Drivers, options);
+        }
+export function useDriversSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<Types.IDriversQuery, Types.IDriversQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<Types.IDriversQuery, Types.IDriversQueryVariables>(Operations.Drivers, options);
+        }
+export type DriversQueryHookResult = ReturnType<typeof useDriversQuery>;
+export type DriversLazyQueryHookResult = ReturnType<typeof useDriversLazyQuery>;
+export type DriversSuspenseQueryHookResult = ReturnType<typeof useDriversSuspenseQuery>;
+export type DriversQueryResult = Apollo.QueryResult<Types.IDriversQuery, Types.IDriversQueryVariables>;
 export type ICreateProductMutationFn = Apollo.MutationFunction<Types.ICreateProductMutation, Types.ICreateProductMutationVariables>;
 
 /**

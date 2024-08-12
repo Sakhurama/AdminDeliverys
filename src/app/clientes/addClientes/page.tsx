@@ -109,14 +109,9 @@ const FormLayout = () => {
                     </div>
                 </div>
 
-
-
-
-
                 <button 
                   className="flex w-full justify-center rounded bg-[#FFBC0D] hover:bg-[#ffdd87] hover:text-black transition-colors duration-300 p-3 font-medium text-black hover:bg-opacity-90"
                   type="submit"
-
                   >
                   Agregar cliente
                 </button>

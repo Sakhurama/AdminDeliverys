@@ -289,6 +289,7 @@ export type IMutationUpdateProductArgs = {
 
 export type IProduct = {
   __typename?: 'Product';
+  ProductPrice: Array<IProductPrice>;
   createdAt: Scalars['DateTime']['output'];
   deliveryProducts: Array<IDeliveryProduct>;
   description: Maybe<Scalars['String']['output']>;
@@ -296,6 +297,14 @@ export type IProduct = {
   image: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
   updatedAt: Scalars['DateTime']['output'];
+};
+
+export type IProductPrice = {
+  __typename?: 'ProductPrice';
+  createdAt: Scalars['DateTime']['output'];
+  id: Scalars['String']['output'];
+  productId: Scalars['String']['output'];
+  updatedAt: Maybe<Scalars['DateTime']['output']>;
   value: Scalars['Int']['output'];
 };
 

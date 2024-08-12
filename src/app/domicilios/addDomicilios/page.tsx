@@ -1,12 +1,9 @@
+"use client";
+
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { Metadata } from "next";
+import CategoriasProductos from "@/components/CategoriasForm/Productos";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
-export const metadata: Metadata = {
-    title: "Cliente | Nuevo producto",
-    description:
-      "This is Next.js Form Elements page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
-  };
 
 const FormLayout = () => {
     return (
@@ -85,6 +82,10 @@ const FormLayout = () => {
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     required
                   />
+                </div>
+
+                <div className="mb-4.5">
+                  <CategoriasProductos />
                 </div>
 
                 <button className="flex w-full justify-center rounded bg-[#FFBC0D] hover:bg-[#ffdd87] hover:text-black transition-colors duration-300 p-3 font-medium text-black hover:bg-opacity-90">

@@ -25,10 +25,10 @@ const FormLayout = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     if (name === 'value') {
-      // Permite solo números y un punto decimal
-      const regex = /^\d*\.?\d{0,2}$/;
+      // Permite solo números enteros positivos
+      const regex = /^\d+$/;
       if (regex.test(value) || value === '') {
-        setFormData(prevState => ({ ...prevState, [name]: value }));
+        setFormData(prevState => ({ ...prevState, [name]: value === '' ? '0' : value }));
       }
     } else {
       setFormData(prevState => ({ ...prevState, [name]: value }));
@@ -89,7 +89,7 @@ const FormLayout = () => {
       setFormData({
         name: '',
         image: '',
-        value: '',
+        value: '0',
         description: '',
       });
       setImage(null);
@@ -138,6 +138,8 @@ const FormLayout = () => {
                         <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black dark:text-white">$</span>
                         <input
                         type="number"
+                        min="0"
+                        step="1"
                         placeholder="Valor del producto"
                         className="w-full pl-10 rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         name='value'

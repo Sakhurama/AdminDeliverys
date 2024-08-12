@@ -1,33 +1,10 @@
 import Image from "next/image";
+import { useProductsQuery } from "@/libs/requests/react.generated";
 
-const productData = [
-  {
-    image: "/images/product/hamburguesa.png",
-    name: "Hamburguesa",
-    price: 10000,
-    description: "Deliciosa hamburguesa con carne jugosa, lechuga fresca y tomate.",
-  },
-  {
-    image: "/images/product/perrito.png",
-    name: "Perro caliente",
-    price: 18200,
-    description: "Clásico perro caliente con salchicha, cebolla, mostaza y ketchup.",
-  },
-  {
-    image: "/images/product/papas.png",
-    name: "Papas locas",
-    price: 1000000,
-    description: "Crocantes papas fritas con salsa especial, queso y trocitos de tocineta.",
-  },
-  {
-    image: "/images/product/hamburguesadoble.png",
-    name: "Hamburguesa doble carne",
-    price: 32000,
-    description: "Hamburguesa con doble carne, queso derretido, lechuga y tomate.",
-  },
-];
 
 const ListaProductos = () => {
+  const {data, loading, error} = useProductsQuery();
+
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="px-4 py-6 md:px-6 xl:px-7.5">
@@ -54,16 +31,16 @@ const ListaProductos = () => {
         </div> */}
       </div>
 
-      {productData.map((product, key) => (
+      {data && data?.products!.length > 0 && data?.products.map((product) => (
         <div
           className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5"
-          key={key}
+          key={product.id}
         >
           <div className="col-span-2 flex items-center sm:col-span-3">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <div className="h-12.5 w-15 rounded-md">
                 <Image
-                  src={product.image}
+                  src={product.image ? product.image : "/images/product/hamburguesa.png"}
                   width={60}
                   height={50}
                   alt="Product"
@@ -77,7 +54,7 @@ const ListaProductos = () => {
           
           <div className="col-span-2 flex items-center">
             <p className="text-sm text-black dark:text-white">
-              ${product.price.toLocaleString('es-ES')}
+              ${(product.ProductPrice[product.ProductPrice.length - 1].value/100).toLocaleString('es-ES')}
             </p>
           </div>
           <div className="col-span-2 flex items-center">

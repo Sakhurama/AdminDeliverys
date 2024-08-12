@@ -1,44 +1,58 @@
 "use client";
+
 import React, { useState } from "react";
+import Image from "next/image";
+import { useProductsQuery } from "@/libs/requests/react.generated";
+
 
 const CategoriasProductos: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
-
+  const [selectedProducts, setSelectedProducts] = useState<Array<{ id: string | number; name: string; price: number; image: string; }>>([]);
+  const {data, loading, error} = useProductsQuery();
   const changeTextColor = () => {
     setIsOptionSelected(true);
+  };
+
+  const handleProductSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = e.target.value;
+    const selectedProduct = data && data?.products!.length > 0 && data?.products?.find(p => p.id.toString() === selectedId);
+    if (selectedProduct) {
+      setSelectedProducts(prev => [...prev, { 
+        id: selectedProduct.id, 
+        name: selectedProduct.name,
+        price: selectedProduct.ProductPrice[selectedProduct.ProductPrice.length - 1].value / 100,
+        image: selectedProduct.image  ? selectedProduct.image : "/images/product/hamburguesa.png"
+      }]);
+    }
+    changeTextColor();
   };
 
   return (
     <div className="w-full xl:w-1/2">
       <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-        {" "}
-        Categoría{" "}
+        Productos a enviar
       </label>
 
       <div className="relative z-20 bg-transparent dark:bg-form-input">
         <select
-          value={selectedOption}
-          onChange={(e) => {
-            setSelectedOption(e.target.value);
-            changeTextColor();
-          }}
+          value=""
+          onChange={handleProductSelection}
           className={`relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary ${
             isOptionSelected ? "text-black dark:text-white" : ""
           }`}
         >
-          <option value="" disabled className="text-body dark:text-bodydark">
-            Elegir la categoría
-          </option>
-          <option value="USA" className="text-body dark:text-bodydark">
-            Camisetas
-          </option>
-          <option value="UK" className="text-body dark:text-bodydark">
-            Pantalones
-          </option>
-          <option value="Canada" className="text-body dark:text-bodydark">
-            Zapatos
-          </option>
+          <option value="" disabled>Elegir los productos</option>
+          {loading ? (
+            <option>Cargando productos...</option>
+          ) : error ? (
+            <option>Error al cargar productos</option>
+          ) : (
+            data && data?.products!.length > 0 && data?.products.map((product) => (
+              <option key={product.id} value={product.id}>
+                {product.name} - ${(product.ProductPrice[product.ProductPrice.length - 1].value/100).toLocaleString('es-ES')}
+              </option>
+            ))
+          )}
         </select>
 
         <span className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
@@ -61,6 +75,48 @@ const CategoriasProductos: React.FC = () => {
           </svg>
         </span>
       </div>
+
+{selectedProducts.length > 0 ? (
+  <div className="mt-6">
+        <h3 className="mb-3 text-sm font-medium text-black dark:text-white">Productos Seleccionados</h3>
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+            <th scope="col" className="px-6 py-3"></th>
+              <th scope="col" className="px-6 py-3">Nombre</th>
+              <th scope="col" className="px-6 py-3">Precio</th>
+              <th scope="col" className="px-6 py-3">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedProducts.map((product) => (
+              <tr key={product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td className="px-6 py-4">
+                <Image
+                  src={product.image}
+                  width={60}
+                  height={60}
+                  alt={product.name}
+                />
+                </td>
+                <td className="px-6 py-4">{product.name}</td>
+                <td className="px-6 py-4">${product.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                <td className="px-6 py-4">
+                  <button 
+                    onClick={() => setSelectedProducts(prev => prev.filter(p => p.id !== product.id))}
+                    className="font-medium text-red hover:underline"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+) : (<div className="text-red my-10"></div>)}
+      
+
     </div>
   );
 };

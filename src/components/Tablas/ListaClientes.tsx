@@ -33,7 +33,6 @@ const ListaClientes = () => {
                     <h5 className="font-medium text-black dark:text-white">
                       {customer.name}
                     </h5>
-                    {/* <p className="text-sm">{customer.email}</p> */}
                   </td>
                   <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                     <p className="text-black dark:text-white">

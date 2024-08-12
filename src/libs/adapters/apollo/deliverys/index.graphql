@@ -1,0 +1,19 @@
+mutation CreateDelivery($data: CreateDeliveryInput!) {
+  createDelivery(data: $data) {
+    address
+    DeliveryCustomer {
+      id
+    }
+    id
+    lat
+    long
+    total
+    DeliveryProducts {
+      id
+      product {
+        id
+        name
+      }
+    }
+  }
+}

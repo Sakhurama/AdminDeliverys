@@ -1,0 +1,19 @@
+mutation CreateDriver($data: CreateDriverInput!) {
+  createDriver(data: $data) {
+    id
+    name
+    lastName
+    phone
+  }
+}
+
+query Drivers {
+  drivers {
+    id
+    name
+    lastName
+    phone
+    updatedAt
+    createdAt
+  }
+}
