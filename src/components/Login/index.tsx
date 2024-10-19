@@ -4,8 +4,6 @@ import React from "react";
 import { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import { ApolloProvider } from "@apollo/client";
-import { useGraphQLClient } from "@/libs/adapters/apollo/client";
 import { useDashboardAuthMutation } from "@/libs/requests/react.generated";
 import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
@@ -36,40 +34,55 @@ const Login: React.FC = () => {
     setShowPassword(!showPassword);
   };
 
-  const [login] = useDashboardAuthMutation()
-
   async function handleAuth(e: any) {
-    e.preventDefault()
-    const request = async () => {
-      try {
-        const data = await login(
-          {
-            variables: {
-              input: {
-                email: email!,
-                password: password!
-              }
-            }
-          }
-        )
-        const token = data.data?.dashboardAuth?.token
-        setCookie('Authentication', token, {
-          maxAge: 60 * 60 * 24 * 7, // La cookie expirará en 7 días
-          path: '/', // La cookie estará disponible en toda la aplicación
-        });
-        toast.done("Bienvenido")
-        return true
-      } catch (error) {
-        toast.error("Credenciales invalidas")
-        return;
-      }
+    e.preventDefault();
+
+    // Simular autenticación exitosa. Aquí puedes agregar cualquier lógica de validación si es necesario.
+    if (email && password) {
+      // Simulando éxito en el login
+      toast.success('Bienvenido');
+      // Redirigir a la página deseada
+      router.push('/productos');
+    } else {
+      // Mostrar error si no hay credenciales válidas
+      toast.error('Credenciales inválidas');
     }
-    const result = await request()
-    if (result) {
-      router.push('/productos')
-    }
-    return
   }
+
+  // const [login] = useDashboardAuthMutation()
+
+  // async function handleAuth(e: any) {
+  //   e.preventDefault()
+  //   const request = async () => {
+  //     try {
+  //       const data = await login(
+  //         {
+  //           variables: {
+  //             input: {
+  //               email: email!,
+  //               password: password!
+  //             }
+  //           }
+  //         }
+  //       )
+  //       const token = data.data?.dashboardAuth?.token
+  //       setCookie('Authentication', token, {
+  //         maxAge: 60 * 60 * 24 * 7, // La cookie expirará en 7 días
+  //         path: '/', // La cookie estará disponible en toda la aplicación
+  //       });
+  //       toast.done("Bienvenido")
+  //       return true
+  //     } catch (error) {
+  //       toast.error("Credenciales invalidas")
+  //       return;
+  //     }
+  //   }
+  //   const result = await request()
+  //   if (result) {
+  //     router.push('/productos')
+  //   }
+  //   return
+  // }
 
 
   return (
@@ -79,7 +92,7 @@ const Login: React.FC = () => {
           <div className="w-full xl:block xl:w-1/2">
             <div className="px-26 mt-9 text-center">
               <Image
-                src={"/images/logo/logoCompleto.png"}
+                src={"/images/logo/logoCompleto.svg"}
                 alt="Logo"
                 width={931}
                 height={834}
