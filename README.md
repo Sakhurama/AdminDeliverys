@@ -6,36 +6,43 @@
 <br>
 
 ### ¿Qué es Admin Delivery?
-Es un dashboard backoffice pensado en administrar los envíos de productos, fue creado como proyecto de aprendizaje  usando React, Next Js y Tailwind.
-En el Admin delivery podrá encontrar:
-- Gestor inventarios
+Es un dashboard backoffice pensado en administrar los envíos de productos. Fue creado como proyecto de aprendizaje usando React, Next.js y Tailwind.  
+En el Admin Delivery podrás encontrar:
+
+- Gestor de inventarios
 - Gestor de usuarios
 - Asignar pedidos mediante Drag and Drop
 - Mapa de Google Maps
 
 <br>
-## ¡Echale un vistazo!
+
+## ¡Échale un vistazo!
+
 ### Login
-Login funcional, actualmente podrás ingresar con cualquier usuario y contraseña, pero tiene una lógica para generar el Token de acceso usando validación de GraphQl.
-![banner principal](public/images/screenshots/login.png)
+Login funcional. Actualmente puedes ingresar con cualquier usuario y contraseña, pero tiene una lógica para generar el Token de acceso usando validación de GraphQL.  
+![Login](public/images/screenshots/login.png)
 
 <br>
+
 ### Tablas y Formularios
-Existen diferentes tablas para ver repartidores, usuarios, productos... Además los formularios permiten para agregar datos a estas tablas, actualmente no muestran los datos pues no tiene Backend, pero en su momento funcionaba todo el CRUD con GraphQL.
-![banner principal](public/images/screenshots/table.png)
-![banner principal](public/images/screenshots/driver.png)
+Existen diferentes tablas para ver repartidores, usuarios y productos. Además, los formularios permiten agregar datos a estas tablas. Actualmente no muestran los datos, ya que no tiene backend, pero en su momento funcionaba todo el CRUD con GraphQL.  
+![Tablas](public/images/screenshots/table.png)  
+![Repartidores](public/images/screenshots/driver.png)
 
 <br>
+
 ### Drag and Drop
-Creamos una funcionalidad para asignar un domicilio a un repartidor de forma fácil y rápido, solamente se debe arrastrar el domicilio hacia su repartidor.
-![banner principal](public/images/screenshots/dragndrop.png)
+Hemos creado una funcionalidad para asignar un domicilio a un repartidor de manera fácil y rápida. Simplemente se arrastra el domicilio hacia su repartidor.  
+![Drag and Drop](public/images/screenshots/dragndrop.png)
 
 <br>
+
 ### Mapa
-API de Google Maps permite ingresar ubicaciones dentro de Colombia y genera la ruta más rápida. Además estabamos trabajando en ver la ubicación del repartidor mientras se dirige a su destino, tipo Uber o Rappi.
-![banner principal](public/images/screenshots/map.png)
-![banner principal](public/images/screenshots/map1.png)
+La API de Google Maps permite ingresar ubicaciones dentro de Colombia y genera la ruta más rápida. Además, estábamos trabajando en ver la ubicación del repartidor mientras se dirige a su destino, al estilo Uber o Rappi.  
+![Mapa 1](public/images/screenshots/map.png)  
+![Mapa 2](public/images/screenshots/map1.png)
 
 <br>
+
 > [!NOTE]
 > Quiero agradecer profundamente a MedusaLab por su apoyo, espacio y acompañamiento durante la creación de este proyecto de aprendizaje. ¡Gracias por todo!
