@@ -14,7 +14,6 @@ En el Admin delivery podrá encontrar:
 - Mapa de Google Maps
 
 <br>
-<br>
 ## ¡Echale un vistazo!
 ### Login
 Login funcional, actualmente podrás ingresar con cualquier usuario y contraseña, pero tiene una lógica para generar el Token de acceso usando validación de GraphQl.
@@ -37,7 +36,6 @@ API de Google Maps permite ingresar ubicaciones dentro de Colombia y genera la r
 ![banner principal](public/images/screenshots/map.png)
 ![banner principal](public/images/screenshots/map1.png)
 
-<br>
 <br>
 > [!NOTE]
 > Quiero agradecer profundamente a MedusaLab por su apoyo, espacio y acompañamiento durante la creación de este proyecto de aprendizaje. ¡Gracias por todo!
