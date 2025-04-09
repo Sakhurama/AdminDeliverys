@@ -94,8 +94,8 @@ const Login: React.FC = () => {
               <Image
                 src={"/images/logo/logoCompleto.svg"}
                 alt="Logo"
-                width={931}
-                height={834}
+                width={500}
+                height={500}
               />
             </div>
           </div>
@@ -103,9 +103,12 @@ const Login: React.FC = () => {
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium text-center">¡Bienvenido nuevamente!</span>
-              <h2 className="mb-9 text-2xl font-bold text-black text-center dark:text-white sm:text-title-xl2">
+              <h2 className=" text-2xl font-bold text-black text-center dark:text-white sm:text-title-xl2">
                 Iniciar sesión
               </h2>
+              <p className="text-center mb-14 bg-rojo text-white rounded-md text-lg">
+                Para ingresar pon cualquier usuario y contraseña
+              </p>
 
               <form className="mx-4 sm:mx-0">
                 <div className="mb-4">
