@@ -6,7 +6,85 @@ import { useCustomersQuery } from "@/libs/requests/react.generated";
 
 
 const ListaClientes = () => {
-  const {data, loading, error} = useCustomersQuery();
+  // const {data, loading, error} = useCustomersQuery();
+  const customers = [
+    {
+      id: "1",
+      name: "Valentina",
+      lastName: "Ruiz",
+      phone: "+5491122334455",
+      image: "/images/user/user-01.png",
+      createdAt: "2025-02-01T08:00:00Z",
+      updatedAt: "2025-02-05T09:30:00Z",
+    },
+    {
+      id: "2",
+      name: "Diego",
+      lastName: "Mendoza",
+      phone: "+5491133445566",
+      image: "/images/user/user-02.png",
+      createdAt: "2025-02-02T09:15:00Z",
+      updatedAt: "2025-02-06T10:45:00Z",
+    },
+    {
+      id: "3",
+      name: "Camila",
+      lastName: "Herrera",
+      phone: "+5491144556677",
+      image: "/images/user/user-03.png",
+      createdAt: "2025-02-03T10:30:00Z",
+      updatedAt: "2025-02-07T11:50:00Z",
+    },
+    {
+      id: "4",
+      name: "Nicolás",
+      lastName: "Morales",
+      phone: "+5491155667788",
+      image: "/images/user/user-04.png",
+      createdAt: "2025-02-04T11:45:00Z",
+      updatedAt: "2025-02-08T12:55:00Z",
+    },
+    {
+      id: "5",
+      name: "Florencia",
+      lastName: "Castro",
+      phone: "+5491166778899",
+      image: "/images/user/user-05.png",
+      createdAt: "2025-02-05T13:00:00Z",
+      updatedAt: "2025-02-09T14:10:00Z",
+    },
+    {
+      id: "6",
+      name: "Tomás",
+      lastName: "Ortega",
+      phone: "+5491177889900",
+      image: "/images/user/user-06.png",
+      createdAt: "2025-02-06T14:15:00Z",
+      updatedAt: "2025-02-10T15:20:00Z",
+    },
+    {
+      id: "7",
+      name: "Martina",
+      lastName: "Vega",
+      phone: "+5491188990011",
+      image: "/images/user/user-07.png",
+      createdAt: "2025-02-07T15:30:00Z",
+      updatedAt: "2025-02-11T16:30:00Z",
+    },
+    {
+      id: "8",
+      name: "Facundo",
+      lastName: "Silva",
+      phone: "+5491199001122",
+      image: "/images/user/user-08.png",
+      createdAt: "2025-02-08T16:45:00Z",
+      updatedAt: "2025-02-12T17:40:00Z",
+    },
+  ];
+
+  const data = { customers }
+  const loading = false;
+  const error = null;
 
   return (
     <div className="container mx-auto">

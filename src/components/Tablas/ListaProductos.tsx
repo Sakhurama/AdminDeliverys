@@ -1,10 +1,11 @@
+import { Products } from "@/libs/requests/nodes.generated";
 import Image from "next/image";
 // import { useProductsQuery } from "@/libs/requests/react.generated";
 
 
 const ListaProductos = () => {
   // const {data, loading, error} = useProductsQuery();
-  const productos = [
+  const products = [
     {
       id: "1",
       name: "Hamburguesa",
@@ -51,7 +52,7 @@ const ListaProductos = () => {
     },
   ];
 
-  const data = { products: productos };
+  const data = { products };
   const loading = false;
   const error = null;
   
