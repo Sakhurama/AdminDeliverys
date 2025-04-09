@@ -1,9 +1,60 @@
 import Image from "next/image";
-import { useProductsQuery } from "@/libs/requests/react.generated";
+// import { useProductsQuery } from "@/libs/requests/react.generated";
 
 
 const ListaProductos = () => {
-  const {data, loading, error} = useProductsQuery();
+  // const {data, loading, error} = useProductsQuery();
+  const productos = [
+    {
+      id: "1",
+      name: "Hamburguesa",
+      image: "/images/product/hamburguesa.png",
+      ProductPrice: {
+        value: 14500,
+      },
+      description: "Jugosa hamburguesa con lechuga, tomate y queso.",
+      createdAt: "2025-01-01T12:00:00Z",
+      updatedAt: "2025-01-02T12:00:00Z",
+    },
+    {
+      id: "2",
+      name: "Hamburguesa Doble",
+      image: "/images/product/hamburguesadoble.png",
+      ProductPrice: {
+        value: 22000,
+      },
+      description: "Hamburguesa doble con extra carne y queso.",
+      createdAt: "2025-01-01T12:05:00Z",
+      updatedAt: "2025-01-02T12:05:00Z",
+    },
+    {
+      id: "3",
+      name: "Papas Fritas",
+      image: "/images/product/papas.png",
+      ProductPrice: {
+        value: 6000,
+      },
+      description: "Crocantes papas fritas acompañadas de salsa.",
+      createdAt: "2025-01-01T12:10:00Z",
+      updatedAt: "2025-01-02T12:10:00Z",
+    },
+    {
+      id: "4",
+      name: "Perrito Caliente",
+      image: "/images/product/perrito.png",
+      ProductPrice: {
+        value: 12500,
+      },
+      description: "Hot dog con salchicha, pan suave y toppings.",
+      createdAt: "2025-01-01T12:15:00Z",
+      updatedAt: "2025-01-02T12:15:00Z",
+    },
+  ];
+
+  const data = { products: productos };
+  const loading = false;
+  const error = null;
+  
 
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -54,7 +105,7 @@ const ListaProductos = () => {
           
           <div className="col-span-2 flex items-center">
             <p className="text-sm text-black dark:text-white">
-              ${(product.ProductPrice[product.ProductPrice.length - 1].value/100).toLocaleString('es-ES')}
+              ${(product.ProductPrice.value).toLocaleString('es-ES')}
             </p>
           </div>
           <div className="col-span-2 flex items-center">
